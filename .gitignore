@@ -3,3 +3,6 @@
 
 # Enviorment
 .env
+
+# Log Files
+.log
