@@ -2,14 +2,14 @@ import psycopg2
 import psycopg2.extras
 import pandas as pd
 
-hostname = "localhost"
-database = "genai-1"
-username = "ayaz"
-password = "1234"
-port_id = 5000
+hostname = "whitewolfden.myddns.me"
+database = "abhinav-dev"
+username = "kingslayer"
+password = "4Khc5D8+6T.3"
+port_id = 6204
 conn = None
 
-csv_path = 'C:\\Users\\ayazr\\Desktop\\git\\active_repository\\gen_ai\\transformation\\solar.csv'
+csv_path = r'C:\Users\StingerStain\Desktop\Git\apollo_people_search_api\staging-to-raw\solar.csv'
 
 create_table_query='''
     CREATE TABLE IF NOT EXISTS solar_companies (
