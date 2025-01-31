@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS solar_companies_without_salesforce (
         number_of_retail_location BIGINT,
         short_description TEXT,
         founded_year BIGINT,
+        competed BOOLEAN DEFAULT FALSE,
         PRIMARY KEY (company, company_linkedin_url)
 );
 
