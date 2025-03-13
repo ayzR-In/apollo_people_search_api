@@ -13,17 +13,12 @@ from include.database_calls import insert_data, status_logger
 #@sleep_and_retry
 #@limits(calls=150, period=60)
 
-rate_limit_hourly = None
-rate_limit_minute = None
-
 def people_search_api(company_url,current_page):
-
-    global rate_limit_hourly, rate_limit_minute
 
     base_url = "https://api.apollo.io/api/v1/mixed_people/search"
 
     default_params = {
-        'q_organization_domains': 'google.com',
+        'q_organization_domains': company_url,
         'page': current_page,
         'per_page': 100,
     }
@@ -53,7 +48,6 @@ def people_search_api(company_url,current_page):
     try:
         response = requests.post(url, headers=headers)
         if response.status_code == 200:
-            print(f'Updating status for API call')
             status_logger(company_url)
 
         # Getting the limit hourly and minute limit
@@ -68,18 +62,7 @@ def people_search_api(company_url,current_page):
         print('API Error:', e)
         return None
 
-def calling_api(company_url, current_page=1):
-
-    global rate_limit_hourly, rate_limit_minute
-
-    # Check API limits before making another call
-    if rate_limit_hourly == 0:
-        logging.warning("Hourly API limit reached stopping execution")
-        return
-
-    if rate_limit_minute == 0:
-        logging.info("Minute limit reached sleeping for 70 seconds")
-        time.sleep(70)
+def calling_api(company_url, current_page):
 
     # Calling API
     response, rate_limit_hourly, rate_limit_minute = people_search_api(company_url, current_page)
@@ -102,3 +85,5 @@ def calling_api(company_url, current_page=1):
 
     if (total_pages > 1) and (current_page < total_pages):  
         calling_api(company_url, current_page + 1)
+    
+    return rate_limit_hourly, rate_limit_minute
