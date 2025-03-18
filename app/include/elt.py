@@ -65,7 +65,7 @@ def extract_data_people(response, contact_variable):
     
     return data_tuples
 
-def default_params(company_url, current_page):
+"""def default_params(company_url, current_page):
     
     titles = ['Founder', 'Operations', 'Technology', 'Revenue', 'Sales', 'Project', 'Implementation']
     
@@ -77,6 +77,6 @@ def default_params(company_url, current_page):
 
     # Append new key-value pairs
     default_params['person_titles[]'] = titles[0]
-    default_params['person_titles[]'] = titles[1]
+    default_params['person_titles[]'] = titles[1]"""
 
     
