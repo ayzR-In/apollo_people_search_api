@@ -1,0 +1,5 @@
+CREATE TABLE api_call_logs (
+    created_date TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    company_url TEXT NOT NULL UNIQUE
+)
