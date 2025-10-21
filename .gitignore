@@ -1,4 +1,10 @@
+# jupter cache
+.ipynb_checkpoints
+
+# Enviorment
 .env
+
+# Log Files
 api_calls.log
 info_api_calls.log
 script_run.bat
