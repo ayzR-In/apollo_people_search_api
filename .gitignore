@@ -1,1 +1,4 @@
 .env
+api_calls.log
+info_api_calls.log
+script_run.bat
